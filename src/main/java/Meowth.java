@@ -45,14 +45,14 @@ public class Meowth{
                 tasks.displayList();
             }
 
-            // else if (inputs[0].toLowerCase().compareTo("mark") == 0){
-            //     int idx = Integer.parseInt(inputs[1]);
-            //     tasks.markDone(idx-1);
-            // }
-            // else if (inputs[0].toLowerCase().compareTo("unmark") == 0){
-            //     int idx = Integer.parseInt(inputs[1]);
-            //     tasks.markUndone(idx-1);
-            // }
+            else if (inputs[0].toLowerCase().compareTo("mark") == 0){
+                int idx = Integer.parseInt(inputs[1]);
+                tasks.markDone(idx-1);
+            }
+            else if (inputs[0].toLowerCase().compareTo("unmark") == 0){
+                int idx = Integer.parseInt(inputs[1]);
+                tasks.markUndone(idx-1);
+            }
             else{
                 tasks.addTask(input);
             }
