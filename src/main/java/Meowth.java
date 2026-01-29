@@ -41,9 +41,9 @@ public class Meowth{
                 break;
             }
 
-            // else if (inputs[0].toLowerCase().compareTo("list") == 0){
-            //     tasks.displayList();
-            // }
+            else if (inputs[0].toLowerCase().compareTo("list") == 0){
+                tasks.displayList();
+            }
 
             // else if (inputs[0].toLowerCase().compareTo("mark") == 0){
             //     int idx = Integer.parseInt(inputs[1]);
@@ -53,11 +53,10 @@ public class Meowth{
             //     int idx = Integer.parseInt(inputs[1]);
             //     tasks.markUndone(idx-1);
             // }
-            // else{
-            //     tasks.addTask(input);
-            // }
-
-            System.out.println(input);
+            else{
+                tasks.addTask(input);
+            }
+            
             System.out.println(line);
         }
     }

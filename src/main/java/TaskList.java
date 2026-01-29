@@ -21,16 +21,28 @@ public class TaskList {
     }
 
     public void displayList(){
-        String listLine = "%d.[%s] %s";
+        // String listLine = "%d.[%s] %s";
+        // if (numTask == 0){
+        //     System.out.println("List is empty, have you taken over the world?");
+        // } else{
+        //     for (int i = 0; i < numTask; i++){
+        //         char status = ' ';
+        //         if (taskStatuses[i] == true){
+        //             status = 'X';
+        //         }
+        //         System.out.println(String.format(listLine, i+1, status, tasks[i]));
+        //     }
+        // }
+        String listLine = "%d. %s";
         if (numTask == 0){
             System.out.println("List is empty, have you taken over the world?");
         } else{
             for (int i = 0; i < numTask; i++){
-                char status = ' ';
-                if (taskStatuses[i] == true){
-                    status = 'X';
-                }
-                System.out.println(String.format(listLine, i+1, status, tasks[i]));
+                // char status = ' ';
+                // if (taskStatuses[i] == true){
+                //     status = 'X';
+                // }
+                System.out.println(String.format(listLine, i+1, tasks[i]));
             }
         }
     }
