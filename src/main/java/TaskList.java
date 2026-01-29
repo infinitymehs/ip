@@ -25,7 +25,7 @@ public class TaskList {
         } else{
             for (int i = 0; i < numTask; i++){
                 char status = ' ';
-                if (tasks[i].getIsDone() == true){
+                if (tasks[i].getDone() == true){
                     status = 'X';
                 }
                 System.out.println(String.format(listLine, i+1, status, tasks[i].getTaskName()));
@@ -35,7 +35,7 @@ public class TaskList {
 
     public void markDone(int idx){
         if (idx < numTask){
-            tasks[idx].setIsDone(true);
+            tasks[idx].setDone(true);
             System.out.println("This task is marked as done! Out of the way!");
             System.out.println(String.format("[X] %s",tasks[idx].getTaskName()));
         }
@@ -46,7 +46,7 @@ public class TaskList {
 
     public void markUndone(int idx){
         if (idx < numTask){
-            tasks[idx].setIsDone(false);
+            tasks[idx].setDone(false);
             System.out.println("This task is marked as undone :(");
             System.out.println(String.format("[ ] %s",tasks[idx].getTaskName()));
         }

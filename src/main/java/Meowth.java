@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Meowth{
-    static String line ="----------------------------------------";
-    public static void startup(){
+    static String LINE ="----------------------------------------";
+    public static void printStart(){
         // credit to whoever made this on ascii art archive
         String logo = "         .-. \\_/ .-.\r\n" + //
                         "         \\.-\\/=\\/.-/\r\n" + //
@@ -16,17 +16,17 @@ public class Meowth{
                         "      .--,-' .--. '----.\r\n" + //
                         "     '----`--'  '--`----'";
         System.out.println(logo);
-        System.out.println(line);
+        System.out.println(LINE);
         System.out.println("Prepare for trouble! And make it double!");
         System.out.println("What can I do for you today?");
-        System.out.println(line);
+        System.out.println(LINE);
     }
-    public static void end(){
+    public static void printEnd(){
         System.out.println("Team Rocket's blasting off againnnnnnn!");
-        System.out.println(line);
+        System.out.println(LINE);
     }
     public static void main(String[] args) {
-        startup();
+        printStart();
         boolean isRunning = true; 
         TaskList tasks = new TaskList();
         while (isRunning){
@@ -34,30 +34,42 @@ public class Meowth{
             String input = in.nextLine();
             String inputs[] = input.split(" ");
 
-            // Breaks the loop and ends
+            // Case 1: If the user ends the chat
             if (inputs[0].toLowerCase().compareTo("bye") == 0){
-                end();
+                // Print the end dialogue and breaks out of the while loop 
+                printEnd();
                 isRunning = false;
                 break;
-            }
-
-            else if (inputs[0].toLowerCase().compareTo("list") == 0){
+            // Case 2: If the user wants to check their list
+            } else if (inputs[0].toLowerCase().compareTo("list") == 0 && inputs.length == 1){
+                // Calls the TaskList object displayList() method
                 tasks.displayList();
-            }
-
-            else if (inputs[0].toLowerCase().compareTo("mark") == 0){
-                int idx = Integer.parseInt(inputs[1]);
-                tasks.markDone(idx-1);
-            }
-            else if (inputs[0].toLowerCase().compareTo("unmark") == 0){
-                int idx = Integer.parseInt(inputs[1]);
-                tasks.markUndone(idx-1);
-            }
-            else{
+            // Case 3: If the user wants to mark a task as done
+            } else if (inputs[0].toLowerCase().compareTo("mark") == 0){
+                // Uses a try catch statement to ensure that the index is valid 
+                // (if there is index / it is a digit)
+                try{
+                    int idx = Integer.parseInt(inputs[1]);
+                    tasks.markDone(idx-1);
+                } catch (Exception e){
+                    System.out.println("Index invalid!");
+                }
+            // Case 4: If the user wants to unmark a task as done
+            } else if (inputs[0].toLowerCase().compareTo("unmark") == 0){
+                // Uses a try catch statement to ensure that the index is valid 
+                // (if there is index / it is a digit)
+                try{
+                    int idx = Integer.parseInt(inputs[1]);
+                    tasks.markUndone(idx-1);
+                } catch (Exception e){
+                    System.out.println("Index invalid!");
+                }
+            // If not, add the user's input as a task 
+            } else{
                 tasks.addTask(input);
             }
             
-            System.out.println(line);
+            System.out.println(LINE);
         }
     }
 }

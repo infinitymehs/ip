@@ -11,11 +11,11 @@ public class Task{
         return taskName;
     }
 
-    public boolean getIsDone(){
+    public boolean getDone(){
         return isDone;
     }
 
-    public void setIsDone(boolean toSet){
+    public void setDone(boolean toSet){
         isDone = toSet;
     }
 
