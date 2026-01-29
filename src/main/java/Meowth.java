@@ -1,6 +1,8 @@
+import java.util.Scanner;
 public class Meowth{
     static String line ="----------------------------------------";
     public static void startup(){
+        // credit to whoever made this on ascii art archive
         String logo = "         .-. \\_/ .-.\r\n" + //
                         "         \\.-\\/=\\/.-/\r\n" + //
                         "      '-./___|=|___\\.-'\r\n" + //
@@ -24,8 +26,39 @@ public class Meowth{
         System.out.println(line);
     }
     public static void main(String[] args) {
-        // credit to whoever made this on ascii art archive
         startup();
-        end();
+        boolean isRunning = true; 
+        TaskList tasks = new TaskList();
+        while (isRunning){
+            Scanner in = new Scanner(System.in);
+            String input = in.nextLine();
+            String inputs[] = input.split(" ");
+
+            // Breaks the loop and ends
+            if (inputs[0].toLowerCase().compareTo("bye") == 0){
+                end();
+                isRunning = false;
+                break;
+            }
+
+            // else if (inputs[0].toLowerCase().compareTo("list") == 0){
+            //     tasks.displayList();
+            // }
+
+            // else if (inputs[0].toLowerCase().compareTo("mark") == 0){
+            //     int idx = Integer.parseInt(inputs[1]);
+            //     tasks.markDone(idx-1);
+            // }
+            // else if (inputs[0].toLowerCase().compareTo("unmark") == 0){
+            //     int idx = Integer.parseInt(inputs[1]);
+            //     tasks.markUndone(idx-1);
+            // }
+            // else{
+            //     tasks.addTask(input);
+            // }
+
+            System.out.println(input);
+            System.out.println(line);
+        }
     }
 }
