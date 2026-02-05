@@ -3,7 +3,7 @@ public class Meowth{
     static String LINE ="----------------------------------------";
     public static void printStart(){
         // credit to whoever made this on ascii art archive
-        String logo = "         .-. \\_/ .-.\r\n" + //
+        String LOGO = "         .-. \\_/ .-.\r\n" + //
                         "         \\.-\\/=\\/.-/\r\n" + //
                         "      '-./___|=|___\\.-'\r\n" + //
                         "     .--| \\|/`\"`\\|/ |--.\r\n" + //
@@ -15,7 +15,7 @@ public class Meowth{
                         "          \\       /--'`\r\n" + //
                         "      .--,-' .--. '----.\r\n" + //
                         "     '----`--'  '--`----'";
-        System.out.println(logo);
+        System.out.println(LOGO);
         System.out.println(LINE);
         System.out.println("Prepare for trouble! And make it double!");
         System.out.println("What can I do for you today?");
@@ -32,7 +32,7 @@ public class Meowth{
         while (isRunning){
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
-            String inputs[] = input.split(" ");
+            String[] inputs = input.split(" ");
             String command = inputs[0].toLowerCase();
             String descriptor = ""; 
             for (int i = 1; i < inputs.length; i++){
@@ -77,7 +77,7 @@ public class Meowth{
 
             } else if (command.compareTo("deadline") == 0){
                 try{
-                    String temp[] = descriptor.split("/by");
+                    String[] temp = descriptor.split("/by");
                     Deadline newDeadline = new Deadline(temp[0],temp[1]);
                     tasks.addTask(newDeadline);
                 } catch (Exception e) {
@@ -86,16 +86,15 @@ public class Meowth{
 
             } else if (command.compareTo("event")==0){
                 try{
-                    // i will clean up the variable names trust
-                    String temp[] = descriptor.split("/from");
+                    String[] temp = descriptor.split("/from");
                     String taskName = temp[0];
-                    String temp2[] = temp[1].split("/to");
+                    String[] temp2 = temp[1].split("/to");
                     Event newEvent = new Event(taskName, temp2[0], temp2[1]);
                     tasks.addTask(newEvent);
                 } catch (Exception e){
                     System.out.println("Something went wrong!");
                 }
-            } else{
+            } else {
                 System.out.println("Sorry I don't understand :(");
             }
             
