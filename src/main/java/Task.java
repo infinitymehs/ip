@@ -19,4 +19,13 @@ public class Task{
         isDone = toSet;
     }
 
+    public void printTask(){
+        String done = " ";
+        if (isDone){
+            done = "X";
+        }
+        String listLine = "[%s] %s";
+        System.out.print(String.format(listLine, done, taskName));
+    }
+
 }

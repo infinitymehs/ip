@@ -33,19 +33,25 @@ public class Meowth{
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
             String inputs[] = input.split(" ");
+            String command = inputs[0].toLowerCase();
+            String descriptor = ""; 
+            for (int i = 1; i < inputs.length; i++){
+                descriptor += inputs[i];
+                descriptor += " ";
+            }
 
             // Case 1: If the user ends the chat
-            if (inputs[0].toLowerCase().compareTo("bye") == 0){
+            if (command.compareTo("bye") == 0){
                 // Print the end dialogue and breaks out of the while loop 
                 printEnd();
                 isRunning = false;
                 break;
             // Case 2: If the user wants to check their list
-            } else if (inputs[0].toLowerCase().compareTo("list") == 0 && inputs.length == 1){
+            } else if (command.compareTo("list") == 0 && inputs.length == 1){
                 // Calls the TaskList object displayList() method
                 tasks.displayList();
             // Case 3: If the user wants to mark a task as done
-            } else if (inputs[0].toLowerCase().compareTo("mark") == 0){
+            } else if (command.compareTo("mark") == 0){
                 // Uses a try catch statement to ensure that the index is valid 
                 // (if there is index / it is a digit)
                 try{
@@ -55,7 +61,7 @@ public class Meowth{
                     System.out.println("Index invalid!");
                 }
             // Case 4: If the user wants to unmark a task as done
-            } else if (inputs[0].toLowerCase().compareTo("unmark") == 0){
+            } else if (command.compareTo("unmark") == 0){
                 // Uses a try catch statement to ensure that the index is valid 
                 // (if there is index / it is a digit)
                 try{
@@ -65,8 +71,32 @@ public class Meowth{
                     System.out.println("Index invalid!");
                 }
             // If not, add the user's input as a task 
+            } else if (command.compareTo("todo") == 0){
+                ToDo newTodo = new ToDo(descriptor);
+                tasks.addTask(newTodo);
+
+            } else if (command.compareTo("deadline") == 0){
+                try{
+                    String temp[] = descriptor.split("/by");
+                    Deadline newDeadline = new Deadline(temp[0],temp[1]);
+                    tasks.addTask(newDeadline);
+                } catch (Exception e) {
+                    System.out.println("Something went wrong :(");
+                }
+
+            } else if (command.compareTo("event")==0){
+                try{
+                    // i will clean up the variable names trust
+                    String temp[] = descriptor.split("/from");
+                    String taskName = temp[0];
+                    String temp2[] = temp[1].split("/to");
+                    Event newEvent = new Event(taskName, temp2[0], temp2[1]);
+                    tasks.addTask(newEvent);
+                } catch (Exception e){
+                    System.out.println("Something went wrong!");
+                }
             } else{
-                tasks.addTask(input);
+                System.out.println("Sorry I don't understand :(");
             }
             
             System.out.println(LINE);

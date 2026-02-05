@@ -7,28 +7,26 @@ public class TaskList {
         numTask = 0;
     }
 
-    public void addTask(String task){
+    public void addTask(Task newTask){
         if (numTask < 100){
-            Task newTask = new Task(task);
             tasks[numTask] = newTask;
             numTask++;
             System.out.println("Added: " + newTask.getTaskName());
+            System.out.println(String.format("Now you have %d tasks in the list!", numTask));
         } else{
             System.out.println("Task list is full! Even Team Rocket isn't as busy :(");
         }
     }
 
     public void displayList(){
-        String listLine = "%d.[%s] %s";
+        String listLine = "%d. ";
         if (numTask == 0){
             System.out.println("List is empty, have you taken over the world?");
         } else{
             for (int i = 0; i < numTask; i++){
-                char status = ' ';
-                if (tasks[i].getDone() == true){
-                    status = 'X';
-                }
-                System.out.println(String.format(listLine, i+1, status, tasks[i].getTaskName()));
+                System.out.print(String.format(listLine, i+1));
+                tasks[i].printTask();
+                System.out.print("\n");
             }
         }
     }
