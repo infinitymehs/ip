@@ -29,8 +29,8 @@ public class Meowth{
         printStart();
         boolean isRunning = true; 
         TaskList tasks = new TaskList();
+        Scanner in = new Scanner(System.in);
         while (isRunning){
-            Scanner in = new Scanner(System.in);
             String input = in.nextLine();
             String[] inputs = input.split(" ");
             String command = inputs[0].toLowerCase();

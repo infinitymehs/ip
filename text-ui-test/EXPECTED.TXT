@@ -1,7 +1,50 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+         .-. \_/ .-.
+         \.-\/=\/.-/
+      '-./___|=|___\.-'
+     .--| \|/`"`\|/ |--.
+    (((_)\  .---.  /(_)))
+     `\ \_`-.   .-'_/ /`_
+       '.__       __.'(_))
+           /     \     //
+          |       |__.'/
+          \       /--'`
+      .--,-' .--. '----.
+     '----`--'  '--`----'
+----------------------------------------
+Prepare for trouble! And make it double!
+What can I do for you today?
+----------------------------------------
+Added: read book 
+Now you have 1 tasks in the list!
+----------------------------------------
+Added: write cs2113 code 
+Now you have 2 tasks in the list!
+----------------------------------------
+Added: insane cny party 
+Now you have 3 tasks in the list!
+----------------------------------------
+1. [T][ ] read book 
+2. [D][ ] write cs2113 code (by: Friday 2359 )
+3. [E][ ] insane cny party (from: Monday 11pm  to: 4am )
+----------------------------------------
+This task is marked as done! Out of the way!
+[X] write cs2113 code 
+----------------------------------------
+Something went wrong :(
+----------------------------------------
+1. [T][ ] read book 
+2. [D][X] write cs2113 code (by: Friday 2359 )
+3. [E][ ] insane cny party (from: Monday 11pm  to: 4am )
+----------------------------------------
+This task is marked as done! Out of the way!
+[X] insane cny party 
+----------------------------------------
+This task is marked as undone :(
+[ ] write cs2113 code 
+----------------------------------------
+1. [T][ ] read book 
+2. [D][ ] write cs2113 code (by: Friday 2359 )
+3. [E][X] insane cny party (from: Monday 11pm  to: 4am )
+----------------------------------------
+Team Rocket's blasting off againnnnnnn!
+----------------------------------------

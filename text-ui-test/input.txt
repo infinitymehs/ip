@@ -1,0 +1,11 @@
+todo read book
+deadline write cs2113 code /by Friday 2359
+event insane cny party /from Monday 11pm /to 4am
+list
+mark 2
+deadline intentional error task
+list
+mark 3
+unmark 2
+list
+bye
