@@ -68,7 +68,11 @@ public class Meowth{
                     int idx = Integer.parseInt(inputs[1]);
                     tasks.markUndone(idx-1);
                 } catch (Exception e){
-                    System.out.println("Index invalid!");
+                    if (inputs.length < 2){
+                        System.out.println("Please enter in an index!");
+                    } else {
+                        System.out.println("Index is non-numeric!");
+                    }
                 }
             // If not, add the user's input as a task 
             } else if (command.compareTo("todo") == 0){
@@ -95,7 +99,7 @@ public class Meowth{
                     System.out.println("Something went wrong!");
                 }
             } else {
-                System.out.println("Sorry I don't understand :(");
+                System.out.println("Sorry I don't understand, let me call Jessie and James over :(");
             }
             
             System.out.println(LINE);
