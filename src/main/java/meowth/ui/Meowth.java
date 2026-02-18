@@ -109,6 +109,17 @@ public class Meowth {
                 } catch (Exception e) {
                     System.out.println("Something went wrong!");
                 }
+            } else if (command.compareTo("delete") == 0){
+                try {
+                    int idx = Integer.parseInt(inputs[1]);
+                    tasks.delete(idx - 1);
+                } catch (Exception e) {
+                    if (inputs.length < 2) {
+                        System.out.println("Please enter in an index!");
+                    } else {
+                        System.out.println("Index is non-numeric!");
+                    }
+                }
             } else {
                 System.out.println("Sorry I don't understand, let me call Jessie and James over :(");
             }

@@ -1,20 +1,22 @@
 package meowth.task;
+import java.util.ArrayList;
+
 public class TaskList {
-    private Task[] tasks;
+    private ArrayList<Task> tasks;
     private int numTask;
 
     public TaskList(){
-        tasks = new Task[100];
+        tasks = new ArrayList<>();
         numTask = 0;
     }
 
     public void addTask(Task newTask){
         if (numTask < 100){
-            tasks[numTask] = newTask;
+            tasks.add(newTask);
             numTask++;
             System.out.println("Added: " + newTask.getTaskName());
             System.out.println(String.format("Now you have %d tasks in the list!", numTask));
-        } else{
+        } else {
             System.out.println("Task list is full! Even Team Rocket isn't as busy :(");
         }
     }
@@ -23,33 +25,44 @@ public class TaskList {
         String listLine = "%d. ";
         if (numTask == 0){
             System.out.println("List is empty, have you taken over the world?");
-        } else{
-            for (int i = 0; i < numTask; i++){
-                System.out.print(String.format(listLine, i+1));
-                tasks[i].printTask();
+        } else {
+            int count = 1;
+            for (Task task: tasks){
+                System.out.print(String.format(listLine, count));
+                task.printTask();
                 System.out.print("\n");
+                count++;
             }
         }
     }
 
     public void markDone(int idx){
         if (idx < numTask){
-            tasks[idx].setDone(true);
+            tasks.get(idx).setDone(true);
             System.out.println("This task is marked as done! Out of the way!");
-            System.out.println(String.format("[X] %s",tasks[idx].getTaskName()));
-        }
-        else{
+            System.out.println(String.format("[X] %s",tasks.get(idx).getTaskName()));
+        } else {
             System.out.println("Task does not exist!");
         }
     }
 
     public void markUndone(int idx){
         if (idx < numTask){
-            tasks[idx].setDone(false);
+            tasks.get(idx).setDone(false);
             System.out.println("This task is marked as undone :(");
-            System.out.println(String.format("[ ] %s",tasks[idx].getTaskName()));
+            System.out.println(String.format("[ ] %s",tasks.get(idx).getTaskName()));
+        } else {
+            System.out.println("Task does not exist!");
         }
-        else{
+    }
+
+    public void delete(int idx){
+        if (idx < numTask){
+            tasks.remove(tasks.get(idx));
+            numTask--;
+            System.out.println("Got it! Deleted the task meow~");
+            System.out.println(String.format("Now you have %d tasks in the list",numTask));
+        } else {
             System.out.println("Task does not exist!");
         }
     }
