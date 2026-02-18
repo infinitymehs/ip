@@ -1,10 +1,14 @@
 package meowth.task;
 public class Deadline extends Task{
-    private String deadline;
+    private static String deadline;
 
     public Deadline(String taskName, String deadlineDate){
         super(taskName);
         deadline = deadlineDate;
+    }
+
+    public static String getDeadline(){
+        return deadline;
     }
 
     public void printTask(){

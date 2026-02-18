@@ -1,13 +1,21 @@
 package meowth.task;
 public class Event extends Task {
     
-    private String from;
-    private String to; 
+    private static String from;
+    private static String to; 
 
     public Event(String taskName, String from, String to){
         super(taskName);
         this.from = from;
         this.to = to;
+    }
+
+    public static String getFrom(){
+        return from;
+    }
+
+    public static String getTo(){
+        return to;
     }
 
     public void printTask(){

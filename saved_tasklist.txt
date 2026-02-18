@@ -1,0 +1,3 @@
+ToDo read bookk  false
+Deadline wk6 ip  false  friday 
+Event bvyn cm2  true  monday 1930   2100 
