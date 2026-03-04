@@ -30,6 +30,10 @@ public class Meowth {
         this.isRunning = isRunning;
     }
 
+    public void getError(MeowthException e){
+        System.out.println(e.getMessage());
+    }
+
     public static void printLine(){
         System.out.println(LINE);
     }
@@ -52,15 +56,23 @@ public class Meowth {
         printStart();
         Meowth ui =  new Meowth();
         TaskList tasks = new TaskList();
-        FileSaver.importTaskList(tasks);
+        try{
+            FileSaver.importTaskList(tasks);
+        } catch (MeowthException e){
+            ui.getError(e);
+        }
         printLine();
 
 
         Scanner in = new Scanner(System.in);
         while (ui.getRunning()) {
             String input = in.nextLine();
-            Command newCommand = Parser.parse(input);
-            newCommand.execute(tasks,ui);
+            try {
+                Command newCommand = Parser.parse(input);
+                newCommand.execute(tasks,ui);
+            } catch (MeowthException e){
+                ui.getError(e);
+            }
             System.out.println(LINE);
         }
     }

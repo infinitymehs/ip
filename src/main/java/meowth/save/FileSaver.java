@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
+import meowth.error.MeowthException;
+import meowth.error.ReadFileException;
 import meowth.task.*;
 
 public class FileSaver {
@@ -54,7 +57,7 @@ public class FileSaver {
         fw.close();
     }
 
-    public static void importTaskList(TaskList tasklist){
+    public static void importTaskList(TaskList tasklist) throws MeowthException{
         File f = new File(FILEPATH); 
         try{
             System.out.println("Meowth is importing previous tasklist!");
@@ -99,6 +102,7 @@ public class FileSaver {
                 }
             }
         } catch (Exception e){
+            throw new ReadFileException();
         }
         
     }

@@ -1,4 +1,5 @@
 package meowth.command;
+import meowth.error.MeowthException;
 import meowth.task.*;
 import meowth.ui.Meowth;
 
@@ -8,6 +9,10 @@ public class ListCommand extends Command {
     }
 
     public void execute(TaskList taskList, Meowth ui){
-        taskList.displayList();
+        try{
+            taskList.displayList();
+        } catch (MeowthException e){
+            ui.getError(e);
+        }
     }
 }

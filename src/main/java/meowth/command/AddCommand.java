@@ -11,6 +11,10 @@ public class AddCommand extends Command {
     }
 
     public void execute(TaskList taskList, Meowth ui){
-        taskList.addTask(newTask);
+        try{
+            taskList.addTask(newTask);
+        } catch (MeowthException e){
+            ui.getError(e);
+        }
     }
 }

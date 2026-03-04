@@ -1,8 +1,7 @@
 package meowth.error;
+
 public class MeowthException extends Exception{
-    //Unknown Command
-
-    // Missing Inputs
-
-    // 
+    public MeowthException(String message) {
+        super(message);
+    }
 }

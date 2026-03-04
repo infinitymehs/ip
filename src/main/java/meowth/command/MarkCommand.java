@@ -1,4 +1,5 @@
 package meowth.command;
+import meowth.error.MeowthException;
 import meowth.task.*;
 import meowth.ui.Meowth;
 
@@ -10,6 +11,10 @@ public class MarkCommand extends Command {
     }
 
     public void execute(TaskList taskList, Meowth ui){
-        taskList.markDone(idx);
+        try{
+            taskList.markDone(idx);
+        } catch (MeowthException e){
+            ui.getError(e);
+        }
     }
 }
