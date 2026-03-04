@@ -121,7 +121,7 @@ public class Meowth {
                     }
                 }
             } else {
-                System.out.println("Sorry I don't understand, let me call Jessie and James over :(");
+                System.out.println("Sorry I don't understand the command, let me call Jessie and James over :(");
             }
 
             System.out.println(LINE);
