@@ -76,4 +76,27 @@ public class TaskList {
         }
     }
 
+    public void find(String stringToFind) throws MeowthException{
+        if (numTask == 0){
+            throw new EmptyTaskListException();
+        } 
+        ArrayList<Task> relevantTasks = new ArrayList<>();
+        for (Task task: tasks){
+            if (task.getTaskName().contains(stringToFind)){
+                relevantTasks.add(task);
+            }
+        }
+        if (relevantTasks.size() == 0){
+            throw new EmptyTaskListException();
+        }
+        String listLine = "%d. ";
+        int count = 1;
+        for (Task task: relevantTasks){
+            System.out.print(String.format(listLine, count));
+            task.printTask();
+            System.out.print("\n");
+            count++;
+        }
+    }
+
 }

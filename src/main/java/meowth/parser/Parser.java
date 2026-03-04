@@ -6,13 +6,8 @@ import meowth.task.*;
 
 public class Parser {
     public static Command parse(String fullInput) throws MeowthException{
-        String[] inputs = fullInput.split(" ");
+        String[] inputs = fullInput.split(" ",2);
         String command = inputs[0].toLowerCase();
-        String descriptor = "";
-        for (int i = 1; i < inputs.length; i++) {
-            descriptor += inputs[i];
-            descriptor += " ";
-        }
         switch(command){
         case "todo":
             if (inputs.length < 2){
@@ -27,7 +22,7 @@ public class Parser {
             }
             
         case "deadline":
-            String[] deadlineTemp = descriptor.split("/by");
+            String[] deadlineTemp = inputs[1].split("/by");
             if (deadlineTemp.length < 2){
                 throw new InvalidInputException();
             } 
@@ -41,7 +36,7 @@ public class Parser {
             }
             
         case "event":
-            String[] eventTemp = descriptor.split("/from");
+            String[] eventTemp = inputs[1].split("/from");
             if (eventTemp.length < 2){
                 throw new InvalidInputException();
             } 
@@ -70,6 +65,13 @@ public class Parser {
         case "delete":
             int deleteIdx = Integer.parseInt(inputs[1]);
             return new DeleteCommand(deleteIdx - 1);
+
+        case "find":
+            if (inputs.length < 2){
+                throw new InvalidInputException();
+            }
+            String stringToFind = inputs[1].trim();
+            return new FindCommand(stringToFind);
 
         case "list":
             return new ListCommand();
