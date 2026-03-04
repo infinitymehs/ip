@@ -1,0 +1,5 @@
+ToDo!read!false 
+Deadline!gec1050 rw3!false!sundy 1800 
+Event!adial!true!sunday 1000!1200 
+ToDo!temp!true 
+ToDo!readbook!false 

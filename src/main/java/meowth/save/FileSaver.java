@@ -13,33 +13,37 @@ public class FileSaver {
         ArrayList<Task> tasks = tasklist.getTasks();
         File f = new File(FILEPATH);
         String textToAdd = "";
+        String INPUTSEPARATOR = "!";
         for (Task task: tasks){
             String line = "";
             if (task instanceof ToDo) {
                 // line: "ToDo taskName true"
-                line += "ToDo!";
+                line += "ToDo";
+                line += INPUTSEPARATOR;
                 line += task.getTaskName();
-                line += "!";
+                line += INPUTSEPARATOR;
                 line += String.valueOf(task.getDone());
                 line += " \n";
             } else if (task instanceof Deadline){
                 // line: "Deadline taskName true deadline"
-                line += "Deadline!";
+                line += "Deadline";
+                line += INPUTSEPARATOR;
                 line += task.getTaskName();
-                line += "!";
+                line += INPUTSEPARATOR;
                 line += String.valueOf(task.getDone());
-                line += "!";
+                line += INPUTSEPARATOR;
                 line += Deadline.getDeadline();
                 line += " \n";
             } else if (task instanceof Event){
                 // line: "Event taskName true from to"
-                line += "Event!";
+                line += "Event";
+                line += INPUTSEPARATOR;
                 line += task.getTaskName();
-                line += "!";
+                line += INPUTSEPARATOR;
                 line += String.valueOf(task.getDone());
-                line += "!";
+                line += INPUTSEPARATOR;
                 line += Event.getFrom();
-                line += "!";
+                line += INPUTSEPARATOR;
                 line += Event.getTo();
                 line += " \n";
             }
@@ -50,8 +54,7 @@ public class FileSaver {
         fw.close();
     }
 
-    public static TaskList importTaskList(){
-        TaskList tasklist = new TaskList();
+    public static void importTaskList(TaskList tasklist){
         File f = new File(FILEPATH); 
         try{
             System.out.println("Meowth is importing previous tasklist!");
@@ -95,9 +98,7 @@ public class FileSaver {
                     break;
                 }
             }
-            return tasklist;
         } catch (Exception e){
-            return tasklist; 
         }
         
     }
