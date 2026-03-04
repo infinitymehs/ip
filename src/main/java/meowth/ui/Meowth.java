@@ -1,7 +1,9 @@
 package meowth.ui;
+import java.io.IOException;
 import java.util.Scanner;
 import meowth.error.*;
 import meowth.task.*;
+import meowth.save.*;
 
 public class Meowth {
     static String LINE = "----------------------------------------";
@@ -35,7 +37,13 @@ public class Meowth {
     public static void main(String[] args) {
         printStart();
         boolean isRunning = true;
-        TaskList tasks = new TaskList();
+
+        // change this to 
+        TaskList tasks = FileSaver.importTaskList();
+        System.out.println("----------------------------------------");
+        // TaskList tasks = new TaskList();
+
+
         Scanner in = new Scanner(System.in);
         while (isRunning) {
             String input = in.nextLine();
@@ -50,6 +58,11 @@ public class Meowth {
             // Case 1: If the user ends the chat
             if (command.compareTo("bye") == 0) {
                 // Print the end dialogue and breaks out of the while loop
+                try{
+                    FileSaver.saveTaskList(tasks);
+                } catch (IOException e){
+                    System.out.println("Sorry something very wrong happened");
+                }
                 printEnd();
                 isRunning = false;
                 break;
@@ -87,13 +100,13 @@ public class Meowth {
                 }
                 // If not, add the user's input as a task
             } else if (command.compareTo("todo") == 0) {
-                ToDo newTodo = new ToDo(descriptor);
+                ToDo newTodo = new ToDo(descriptor.trim());
                 tasks.addTask(newTodo);
 
             } else if (command.compareTo("deadline") == 0) {
                 try {
                     String[] temp = descriptor.split("/by");
-                    Deadline newDeadline = new Deadline(temp[0], temp[1]);
+                    Deadline newDeadline = new Deadline(temp[0].trim(), temp[1].trim());
                     tasks.addTask(newDeadline);
                 } catch (Exception e) {
                     System.out.println("Something went wrong :(");
@@ -102,9 +115,9 @@ public class Meowth {
             } else if (command.compareTo("event") == 0) {
                 try {
                     String[] temp = descriptor.split("/from");
-                    String taskName = temp[0];
+                    String taskName = temp[0].trim();
                     String[] temp2 = temp[1].split("/to");
-                    Event newEvent = new Event(taskName, temp2[0], temp2[1]);
+                    Event newEvent = new Event(taskName, temp2[0].trim(), temp2[1].trim());
                     tasks.addTask(newEvent);
                 } catch (Exception e) {
                     System.out.println("Something went wrong!");

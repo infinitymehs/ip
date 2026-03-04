@@ -21,6 +21,6 @@ public class Event extends Task {
     public void printTask(){
         System.out.print("[E]");
         super.printTask();
-        System.out.print(String.format("(from:%s to:%s)",from, to ));
+        System.out.print(String.format(" (from: %s to: %s)",from, to));
     }
 }

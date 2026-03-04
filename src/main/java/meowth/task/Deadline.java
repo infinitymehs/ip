@@ -14,7 +14,7 @@ public class Deadline extends Task{
     public void printTask(){
         System.out.print("[D]");
         super.printTask();
-        System.out.print(String.format("(by:%s)", deadline));
+        System.out.print(String.format(" (by: %s)", deadline));
     }
 
 }
