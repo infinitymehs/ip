@@ -25,6 +25,8 @@ public class Parser {
         String[] inputs = fullInput.split(" ",2);
         String command = inputs[0].toLowerCase();
         switch(command){
+        case "help":
+            return new HelpCommand();
         case "todo":
             if (inputs.length < 2){
                 throw new InvalidInputException();
@@ -77,14 +79,23 @@ public class Parser {
             }
             
         case "mark":
+            if (inputs.length < 2){
+                throw new InvalidInputException();
+            }
             int markIdx = Integer.parseInt(inputs[1]);
             return new MarkCommand(markIdx - 1);
 
         case "unmark":
+            if (inputs.length < 2){
+                throw new InvalidInputException();
+            }
             int unmarkIdx = Integer.parseInt(inputs[1]);
             return new UnmarkCommand(unmarkIdx - 1);
 
         case "delete":
+            if (inputs.length < 2){
+                throw new InvalidInputException();
+            }
             int deleteIdx = Integer.parseInt(inputs[1]);
             return new DeleteCommand(deleteIdx - 1);
 

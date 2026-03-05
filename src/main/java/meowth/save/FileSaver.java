@@ -68,6 +68,7 @@ public class FileSaver {
         FileWriter fw = new FileWriter(FILEPATH);
         fw.write(textToAdd);
         fw.close();
+        System.out.println("Meowth has saved the tasklist!");
     }
 
     /**

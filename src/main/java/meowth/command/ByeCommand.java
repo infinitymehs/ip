@@ -22,9 +22,9 @@ public class ByeCommand extends Command{
      * @param ui The user interface for displaying messages and controlling app state.
      */
     public void execute(TaskList taskList, Meowth ui){
-        Meowth.printEnd();
         Command saveCommand = new SaveCommand();
         saveCommand.execute(taskList, ui);
+        Meowth.printEnd();
         ui.setRunning(false);
     }
 }
