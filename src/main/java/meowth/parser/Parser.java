@@ -3,8 +3,24 @@ import meowth.command.*;
 import meowth.error.*;
 import meowth.task.*;
 
-
+/**
+ * Parses raw user input strings into appropriate Command objects.
+ * Supports todo, deadline, event, mark, unmark, delete, find, list, and bye commands.
+ * Throws exceptions for invalid input formats.
+ */
 public class Parser {
+    
+    /**
+     * Converts user input into a Command object for execution.
+     * Uses switch statement to recognize command type and extract arguments.
+     * 
+     * @param fullInput Raw user input string from UI (e.g. "todo buy milk", "delete 1")
+     * @return Command object ready for execution via polymorphism
+     * @throws MeowthException If command is unknown or input format is invalid
+     * @throws InvalidInputException For missing descriptions, malformed deadlines/events, or invalid indices
+     * @throws UnknownCommandException For unrecognized command words
+     * @throws InvalidIndexException When the index is too large/small for the task lists
+     */
     public static Command parse(String fullInput) throws MeowthException{
         String[] inputs = fullInput.split(" ",2);
         String command = inputs[0].toLowerCase();
@@ -22,6 +38,9 @@ public class Parser {
             }
             
         case "deadline":
+            if (inputs.length < 2){
+                throw new InvalidInputException();
+            } 
             String[] deadlineTemp = inputs[1].split("/by");
             if (deadlineTemp.length < 2){
                 throw new InvalidInputException();
@@ -36,6 +55,9 @@ public class Parser {
             }
             
         case "event":
+            if (inputs.length < 2){
+                throw new InvalidInputException();
+            } 
             String[] eventTemp = inputs[1].split("/from");
             if (eventTemp.length < 2){
                 throw new InvalidInputException();
@@ -82,6 +104,5 @@ public class Parser {
         default: 
             throw new UnknownCommandException();
         }
-        
     }
 }
