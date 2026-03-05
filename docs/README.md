@@ -27,7 +27,7 @@
 **Task indices are 1-based** (first task is `1`, second is `2`, etc.)
 
 ## Listing tasks
-If you want to view the entire tasklist, use the `list` command!
+If you want to view the entire tasklist, use the `list` command!<br>
 **Format**: `list`
 
 Example: 
