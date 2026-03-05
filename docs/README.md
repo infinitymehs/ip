@@ -190,6 +190,7 @@ Team Rocket's blasting off againnnnnnn!
 
 | Command | Format | Example |
 |---------|--------|---------|
+|Help| `help` | `help` |
 | Todo | `todo <desc>` | `todo homework` |
 | Deadline | `deadline <desc> /by <time>` | `deadline iP /by Dec 1` |
 | Event | `event <desc> /from <s> /to <e>` | `event meeting /from 2pm /to 3pm` |
